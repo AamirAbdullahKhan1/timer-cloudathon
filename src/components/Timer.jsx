@@ -51,7 +51,7 @@ export default function CloudathonTimer() {
         <div className="relative z-10 text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 text-white">SRM Institute of Science and Technology</h1>
           <h2 className="text-2xl mb-6 text-white">Presents</h2>
-          <h2 className="text-4xl mb-6 text-white uppercase font-medium">Cloudathon</h2>
+          <h2 className="text-5xl mb-6 text-white uppercase font-medium font-audiowide tracking-wider">Cloudathon</h2>
           <img
             src="https://imgur.com/6sf3JKI.png"
             alt="CloudCon x Pulse Logo"
