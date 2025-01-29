@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 export default function CloudathonTimer() {
-  const [timeLeft, setTimeLeft] = useState(8 * 60 * 60); // 8 hours in seconds
+  const [timeLeft, setTimeLeft] = useState(45 * 60); // 45 minutes in seconds
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
@@ -18,12 +18,9 @@ export default function CloudathonTimer() {
   }, [isRunning, timeLeft]);
 
   const formatTime = (time) => {
-    const hours = Math.floor(time / 3600);
-    const minutes = Math.floor((time % 3600) / 60);
+    const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${hours.toString().padStart(2, '0')}:${minutes
-      .toString()
-      .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
   const handleStart = () => {
@@ -36,10 +33,10 @@ export default function CloudathonTimer() {
 
   const handleReset = () => {
     setIsRunning(false);
-    setTimeLeft(6 * 60 * 60); // Reset to initial value
+    setTimeLeft(45 * 60); // Reset to initial value (45 minutes)
   };
 
-  const totalDuration = 6 * 60 * 60; // Total duration in seconds
+  const totalDuration = 45 * 60; // Total duration in seconds for 45 minutes
   const progress = 1 - timeLeft / totalDuration; // Progress as a fraction
   const circleRadius = 90; // Radius of the SVG circle
   const circleCircumference = 2 * Math.PI * circleRadius;
@@ -51,7 +48,7 @@ export default function CloudathonTimer() {
         <div className="relative z-10 text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 text-white">SRM Institute of Science and Technology</h1>
           <h2 className="text-2xl mb-6 text-white">Presents</h2>
-          <h2 className="text-5xl mb-6 text-white uppercase font-medium font-audiowide tracking-wider">Cloudathon</h2>
+          <h2 className="text-5xl mb-6 text-white uppercase font-medium font-audiowide tracking-wider">DESGIN DASH</h2>
           <img
             src="https://imgur.com/6sf3JKI.png"
             alt="CloudCon x Pulse Logo"
@@ -86,7 +83,7 @@ export default function CloudathonTimer() {
                 strokeDashoffset={strokeDashoffset}
                 strokeLinecap="round"
                 animate={{ strokeDashoffset }}
-                transition={{ duration: 0.5, ease: "linear" }}
+                transition={{ duration: 1, ease: "linear" }} // Adjust duration to suit your needs
               />
             </svg>
 
@@ -136,23 +133,6 @@ export default function CloudathonTimer() {
           </div>
         </div>
 
-        <div className="relative z-10 mt-8 mb-4 text-lg text-white opacity-75">
-          Hackathon ends in{' '}
-          <motion.span
-            className="font-bold"
-            animate={{
-              opacity: [1, 0.5, 1],
-            }}
-            transition={{
-              duration: 1.5,
-              ease: "easeInOut",
-              times: [0, 0.5, 1],
-              repeat: Infinity,
-            }}
-          >
-            {formatTime(timeLeft)}
-          </motion.span>
-        </div>
       </div>
     </div>
   );
